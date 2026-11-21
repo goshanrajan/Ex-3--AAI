@@ -37,8 +37,8 @@
 
 
 ## Program:
-```
-pip install pgmpy
+```py
+%pip install pgmpy
 
 from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
@@ -160,14 +160,14 @@ gibbs_sampler = GibbsSampling(network)
 # Number of samples
 num_samples = 10000
 
-# Perform sampling
+# Perform sampling (GibbsSampling in pgmpy 1.1.2 returns a DataFrame)
 samples = gibbs_sampler.sample(size=num_samples)
 
 # Query variable
-query_variable = 'Burglary'
+query_variable = "Burglary"
 
-# Approximate probability
-query_result = samples[query_variable].value_counts(normalize=True)
+# Approximate probability (states are shown in ascending order)
+query_result = samples[query_variable].value_counts(normalize=True).sort_index()
 
 # Print result
 print(f"\nApproximate Probabilities of {query_variable}:")
@@ -176,10 +176,11 @@ print(query_result)
 
 ## Output:
 <Show your results>
-<img width="723" height="561" alt="image" src="https://github.com/user-attachments/assets/0048851e-9a18-45bd-a0b4-9c040ad0fc44" />
+<img width="660" height="521" alt="output 2" src="https://github.com/user-attachments/assets/6eb8988c-de2e-4319-857d-90f1ac53b780" />
 
-   
-<img width="518" height="101" alt="image" src="https://github.com/user-attachments/assets/aae421d7-fc90-4217-8c27-804b9103c52a" />
+
+<img width="710" height="135" alt="Screenshot 2026-11-21 084307" src="https://github.com/user-attachments/assets/0a1a4ea4-d121-468b-a18a-ed96ce2418af" />
+
 
 
 ## Result:
